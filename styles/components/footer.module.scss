@@ -1,0 +1,10 @@
+@use '../colors' as *;
+
+.footer {
+    background-color: $blue;
+
+    p {
+        padding: .5rem 1rem;
+        margin: 0;
+    }
+}

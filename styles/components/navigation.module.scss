@@ -1,0 +1,12 @@
+.header {
+    background: #eee;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.navigation > a {
+    color: #000;
+    margin: 1rem;
+    text-decoration: none;
+}
