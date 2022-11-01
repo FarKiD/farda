@@ -1,8 +1,118 @@
-.intro {
-    margin: 5vh 0;
-    height: 100vh;
+@use '../colors' as *;
+@use 'sass:color';
+
+.intro_container {
+    width: 100%;
+    height: 60vh;
+    min-height: 600px;
+    background: $camel1;
+    position: relative;
+
+    svg {
+        position: absolute;
+        bottom: 0;
+        user-select: none;
+        -webkit-user-drag: none;
+        z-index: 0;
+    }
 }
 
-.whyUs {
+.intro {
+    color: $brown;
+    margin: 0 auto;
+    padding: 15vh 0 0 0;
     text-align: center;
+    width: fit-content;
+    user-select: none;
+
+    .intro_titles > * {
+        margin: 0
+    }
+
+    .intro_content {
+        margin-top: 5rem;
+    }
+
+    .intro_buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        
+        :first-child {
+            background-color: $brown;
+            color: $yellow;
+        }
+        :first-child:hover {
+            background-color: color.adjust($brown, $alpha: -0.1);
+            color: $yellow;
+        }
+
+        :nth-child(2) {
+            background-color: #fff;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 5rem;
+            width: 16rem;
+            height: 5rem;
+            margin: 2rem 0 0 0;
+            cursor: pointer;
+            transition: 500ms;
+            z-index: 2;
+        }
+        a:hover {
+            box-shadow: 0 0 .8rem #000;
+        }
+
+        
+    }
 }
+
+
+
+
+/*  CODE FOR MOUSE FOLLOWING ANIMATION
+.wrapper {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    // max-width: 20rem;
+    max-height: 30rem;
+    padding: 1.5rem;
+    margin: 4rem 0 0 0;
+    
+}
+
+.drone_container {
+    position: relative;
+    border-radius: 100%;
+    width: 20rem;
+    height: 20rem;
+    // background-color: #f7f7f7;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.drone {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border-radius: 50%;
+    transition: transform 800ms ease-out;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.intro {
+    height: 30rem;
+}
+*/

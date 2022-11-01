@@ -1,32 +1,40 @@
 import classes from '../styles/pages/index.module.scss';
+import Icons from "../assets/images/mountains.js";
 
 export default function Home() {
   return (
-    <main className="container-fluid">
-      <div className={`${classes.intro} row`}>
-        <div className="col">
-          <h2>
-            PLACE HOLDER FOR SOME SORT OF IMAGE
-          </h2>
+    <main>
+      <section className={classes.intro_container}>
+        <div className={classes.intro}>
+          <div className={classes.intro_titles}>
+            <h1>
+              همراه صهبا
+            </h1>
+            <h2>
+              به رزومه ما خوش آمدید
+            </h2>
+          </div>
+          <div className={classes.intro_content}>
+            <p>
+            رزومه وبسیات صهبا رزومه وبسیات صهبا رزومه وبسیات صهبا رزومه
+            <br />
+            وبسیات صهبا رزومه وبسیات صهبا
+            <br />
+            رزومه وبسیات صهبا رزومه وبسیات صهبا رزومه وبسیات صهبا  
+            </p>
+            <div className={`h3 ${classes.intro_buttons}`}>
+              <a>Click Here</a>
+              <a>Click Here</a>
+            </div>
+          </div>
         </div>
-        <div className="col">
-          <h1>
-            This is our homepage for shop WELCOME!  
-          </h1>
+        <div>
+        {Icons.mountains('img-fluid')}
         </div>
-      </div>
-
-      <div className={`${classes.whyUs} row`}>
-        <div className='col'>
-          Placeholder
-        </div>
-        <div className='col'>
-          Placeholder
-        </div>
-        <div className='col'>
-          Placeholder
-        </div>
-      </div>
+      </section>
+      <section>
+        This is section two
+      </section>
     </main>
   )
 }
