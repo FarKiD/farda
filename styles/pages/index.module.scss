@@ -75,6 +75,7 @@
     }
 }
 
+// TODO put into a seperate file
 @mixin animate($animation, $duration, $times) {
   animation: $animation $duration $times;
 }
@@ -85,23 +86,26 @@
     }
   }
   
-  //shadow [color], time [seconds], colors... [any number of colors]
   @mixin moveClouds($time) {
     @include keyframes(moveClouds) {
       0% {
-        transform: translate(0, 2rem);
+        transform: translate(0, 0);
       }
 
       25% {
-        transform: translate(5rem, 0rem);
+        transform: translate(-4rem, -3rem);
       }
   
       50% {
-        transform: translate(-3rem, -3rem);
+        transform: translate(4rem, 3rem);
+      }
+
+      75% {
+        transform: translate(-2rem, -2rem);
       }
   
       100% {
-        transform: translate(0, 2rem);
+        transform: translate(0, 0);
       }
     }
   
