@@ -75,6 +75,43 @@
     }
 }
 
+@mixin animate($animation, $duration, $times) {
+  animation: $animation $duration $times;
+}
+  
+  @mixin keyframes($name) {
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+  
+  //shadow [color], time [seconds], colors... [any number of colors]
+  @mixin moveClouds($time) {
+    @include keyframes(moveClouds) {
+      0% {
+        transform: translate(0, 2rem);
+      }
+
+      25% {
+        transform: translate(5rem, 0rem);
+      }
+  
+      50% {
+        transform: translate(-3rem, -3rem);
+      }
+  
+      100% {
+        transform: translate(0, 2rem);
+      }
+    }
+  
+    @include animate(moveClouds, $time, infinite);
+  }
+
+  .mountains svg g path:nth-of-type(n + 2) {
+    @include moveClouds(15s);
+  }
+
 // SECTION 1 END --- INTRO END
 
 .section2 {

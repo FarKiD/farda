@@ -36,8 +36,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div>
-          {Icons.mountains('img-fluid')}
+        <div className={`${classes.mountains}`}>
+          {Icons.mountains(`img-fluid`)}
         </div>
       </section>
       {/* SECTION 2 --- SLIDESHOW */}
