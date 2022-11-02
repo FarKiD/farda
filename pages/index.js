@@ -15,7 +15,7 @@ export default function Home() {
       <section className={classes.intro_container}>
         <div className={classes.intro}>
           <div className={classes.intro_titles}>
-            <h1>
+            <h1 className={classes.title}>
               همراه صهبا
             </h1>
             <h2>

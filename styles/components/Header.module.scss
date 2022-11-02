@@ -13,9 +13,17 @@
     display: flex;
     list-style: none;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin: 0;
+    justify-content: flex-end;
+    margin: 0 2rem 0 0;
     padding: 0;
+
+    li:not(li:last-of-type) {
+      padding: 0 3rem;
+    }
+
+    li:last-of-type {
+      padding: 0 0 0 3rem;
+    }
   }
 
   a {
@@ -27,4 +35,4 @@
   a:hover {
     color: $brown1;
   }
-}
+} 

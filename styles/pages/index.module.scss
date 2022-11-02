@@ -28,6 +28,10 @@
     width: fit-content;
     user-select: none;
 
+    .title {
+      color: $plum;
+    }
+
     .intro_titles > * {
         margin: 0
     }
