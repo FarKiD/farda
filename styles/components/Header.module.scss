@@ -5,11 +5,13 @@
   position: -webkit-sticky;
   top: 0;
   z-index: 3;
-  background: $brown;
+  background: $camel1;
   padding: 1rem 0;
+  box-shadow: 0 0 .8rem #000;
 
   ul {
     display: flex;
+    list-style: none;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0;
@@ -18,11 +20,11 @@
 
   a {
     text-decoration: none;
-    color: $camel1;
+    color: $brown;
     transition: 500ms;
   }
 
   a:hover {
-    color: $camel;
+    color: $brown1;
   }
 }
