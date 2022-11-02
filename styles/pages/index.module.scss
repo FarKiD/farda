@@ -1,5 +1,8 @@
 @use '../colors' as *;
 @use 'sass:color';
+@import '../util/banner';
+
+// SECTION 1 START --- INTRO
 
 .intro_container {
     width: 100%;
@@ -72,6 +75,20 @@
     }
 }
 
+// SECTION 1 END --- INTRO END
+
+.section2 {
+    @include banner(transparent, 30s, $grey, $white, $grey, $white, $grey);
+}
+
+
+// SECTION 3 START
+
+.section3 {
+    height: 25vh;
+    min-height: 20rem;
+    background: color.adjust($camel1, $alpha: -0.5);
+}
 
 
 

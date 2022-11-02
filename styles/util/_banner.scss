@@ -1,0 +1,35 @@
+@use '../colors' as *;
+
+@mixin animate($animation, $duration, $times) {
+  animation: $animation $duration $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+//shadow [color], time [seconds], colors... [any number of colors]
+@mixin banner($shadow, $time, $colors...) {
+  background: linear-gradient(-45deg, $colors);
+  background-size: 400% 400%;
+  border-radius: .3rem;
+  box-shadow: 0 0 1rem $shadow;
+
+  @include keyframes(bg-animation) {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @include animate(bg-animation, $time, infinite);
+}

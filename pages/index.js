@@ -1,9 +1,17 @@
+import Head from 'next/head';
+
 import classes from '../styles/pages/index.module.scss';
-import Icons from "../assets/images/mountains.js";
+
+import LogoSlideshow from '../components/LogoSlideshow';
+import Icons from "../assets/images/icons.js";
 
 export default function Home() {
   return (
     <main>
+      <Head>
+        <title>همراه صهبا | رزومه</title>
+      </Head>
+      {/* SECTION 1 --- INTRO */}
       <section className={classes.intro_container}>
         <div className={classes.intro}>
           <div className={classes.intro_titles}>
@@ -29,11 +37,16 @@ export default function Home() {
           </div>
         </div>
         <div>
-        {Icons.mountains('img-fluid')}
+          {Icons.mountains('img-fluid')}
         </div>
       </section>
-      <section>
-        This is section two
+      {/* SECTION 2 --- SLIDESHOW */}
+      <section className={classes.section2}>
+          <LogoSlideshow />
+      </section>
+      {/* SECTION 3 */}
+      <section className={classes.section3}>
+        <h1>test</h1>
       </section>
     </main>
   )

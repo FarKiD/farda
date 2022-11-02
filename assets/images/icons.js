@@ -7,9 +7,9 @@ const Icons = {
             mountainsSVG(classes)
         )
     },
-    sepahBank() {
+    sepahBank(classes) {
         return(
-            sepahSVG()
+            sepahSVG(classes)
         );
     }
     
