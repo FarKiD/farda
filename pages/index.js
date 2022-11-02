@@ -46,7 +46,15 @@ export default function Home() {
       </section>
       {/* SECTION 3 */}
       <section className={classes.section3}>
-        <h1>test</h1>
+        <div className={`${classes.whyUs} row`}>
+          <div className='col'>چرا ما؟</div>
+          <div className='col'>چرا ما؟</div>
+          <div className='col'>چرا ما؟</div>
+        </div>
+      </section>
+      {/* SECTION 4 */}
+      <section>
+        <h1>SECTION 4</h1>
       </section>
     </main>
   )

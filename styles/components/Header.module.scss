@@ -1,0 +1,28 @@
+@use '../colors' as *;
+
+.header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 3;
+  background: $brown;
+  padding: 1rem 0;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: $camel1;
+    transition: 500ms;
+  }
+
+  a:hover {
+    color: $camel;
+  }
+}

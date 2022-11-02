@@ -12,13 +12,6 @@ const LogoSlideshow = () => {
         Icons.sepahBank,
         Icons.sepahBank,
         Icons.sepahBank,
-        Icons.sepahBank,
-        Icons.sepahBank,
-        Icons.sepahBank,
-        Icons.sepahBank,
-        Icons.sepahBank,
-        Icons.sepahBank,
-        Icons.sepahBank
     ];
 
     const renderLogos = logos.map((logo) => {
