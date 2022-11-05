@@ -1,7 +1,7 @@
 import uuid4 from 'uuid4';
 
 const ResumeListItems = (props) => {
-  const renderListItem = () => {
+  const renderListItem = () => { // TODO: make it work with selectable filters
     // Maps through the given data, prints all out by default
       // returns the filtered items otherwise
     return props.state.query === ""

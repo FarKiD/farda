@@ -1,5 +1,5 @@
-import sepahSVG from './svg/sepahBank';
-import mountainsSVG from './svg/mountain';
+import sepahSVG from './icons/sepahBank';
+import mountainsSVG from './icons/mountain';
 
 const Icons = {
     mountains(classes) {

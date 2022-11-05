@@ -43,7 +43,8 @@ export default function Home() {
     }); 
   }
 
-  return (
+  // ? consider turning each section into seperate components
+  return ( 
     <main>
       <Head>
         <title>همراه صهبا | رزومه</title>
