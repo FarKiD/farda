@@ -1,0 +1,23 @@
+@use '../colors' as *;
+@use 'sass:color';
+
+.resumeListContainer {
+  width: 50vw;
+  height: 30vh;
+  background: color.adjust($grey, $alpha: -0.8);
+  border-radius: .4rem;
+
+  direction: rtl;
+
+  margin: 0 auto;
+
+  overflow: auto;
+
+  ul {
+    padding: 1rem;
+  }
+
+  li {
+    list-style: none;
+  }
+}

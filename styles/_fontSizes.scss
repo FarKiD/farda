@@ -10,7 +10,7 @@ h3, .h3 {
 h4, .h4 {
     font-size: clamp(1.625rem, calc( 12px + 1.300vw ), 1.950rem);
 }
-p, a, .p, .a {
+p, a, .p, .a, li, input {
     font-size: clamp(1.380rem, calc( 12px + 0.720vw ), 1.500rem);
 }
 span, .span {

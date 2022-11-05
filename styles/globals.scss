@@ -1,4 +1,9 @@
+@use './colors' as *;
 @import './fontSizes';
+
+* {
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -20,14 +25,25 @@ body {
   text-align: center;
 }
 
-* {
-  // margin: 0;
-  // padding: 0;
-  box-sizing: border-box;
+// Scrollbar Style
+/* width */
+::-webkit-scrollbar {
+  width: 1rem;
 }
 
-// body {
-//   display: grid;
-//   align-items: safe center;
-//   justify-content: safe center;
-// }
+/* Track */
+::-webkit-scrollbar-track {
+  background: $grey;
+  border-radius: 2rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $plum;
+  border-radius: .4rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $plum1;
+}

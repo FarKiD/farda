@@ -1,0 +1,11 @@
+@use '../colors' as *;
+
+.footer {
+  margin: 2rem 0 0 0;
+  background: $camel1;
+
+  p {
+    margin: 0;
+    padding: .5rem 1rem;
+  }
+}

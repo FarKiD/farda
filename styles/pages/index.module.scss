@@ -148,6 +148,39 @@
     }
 }
 
+// ** SECTION 3 END
+
+// >>> SECTION 4 START
+
+.section4 {
+  margin-top: 4rem;
+
+  .section4title {
+    direction: rtl;
+    margin: 0 2rem;
+  }
+}
+
+.searchInput {
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
+  width: 70%;
+  margin: 4rem auto 2rem auto;
+  height: 3rem;
+  transition: 200ms;
+}
+
+.searchInput:focus {
+  outline: none;
+  background: #d9d9d9;
+  border: .1rem solid #000;
+  border-radius: .2rem;
+  padding: 0 .4rem;
+}
+
+// ** SECTION 4 END
+
 
 
 
