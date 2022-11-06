@@ -16,6 +16,18 @@ import Icons from "../assets/images/icons.js";
 import PenPaperSVG from '../assets/images/svg/resume/penPaper.svg';
 import PhoneSVG from '../assets/images/svg/resume/phone.svg';
 import HeartSVG from '../assets/images/svg/resume/heart.svg';
+import ApartmentSVG from '../assets/images/svg/resume/apartment.svg';
+import BuildingSVG from '../assets/images/svg/resume/building.svg';
+import ChainSVG from '../assets/images/svg/resume/chain.svg';
+import CoalSVG from '../assets/images/svg/resume/coal.svg';
+import FactorySVG from '../assets/images/svg/resume/factory.svg';
+import GraduationSVG from '../assets/images/svg/resume/graduation.svg';
+import HealthcareSVG from '../assets/images/svg/resume/healthcare.svg';
+import MosqueSVG from '../assets/images/svg/resume/mosque.svg';
+import MuseumSVG from '../assets/images/svg/resume/museum.svg';
+import OtherSVG from '../assets/images/svg/resume/other.svg';
+import TraySVG from '../assets/images/svg/resume/tray.svg';
+import VaultSVG from '../assets/images/svg/resume/vault.svg';
 
 
 export default function Home() {
@@ -24,11 +36,30 @@ export default function Home() {
     list: []
   });
   const [fetchedData, setFetchedData] = useState([]);
+  const [svgFilters, setSvgFilters] = useState([]);
 
   useEffect(() => {
     indexScript();
-  })
+    const svgFilterElement = document.querySelector(`.${classes.filterIconsContainer}`);
 
+    svgFilterElement.addEventListener("click", (event) => {
+      let element = event.target.closest("div");
+
+      setSvgFilters(svgFilters.push(element.id));
+
+      console.log(svgFilters);
+
+      if (
+        element.classList.contains(classes.svgActive) &&
+        svgFilters.includes(element.id)
+      ) {
+        element.classList.remove(classes.svgActive);
+      } else {
+        element.classList.add(classes.svgActive);
+      }
+    });
+  }, [])
+  
   fetch('/dummyData.json')
   .then((response) => {
     return response.json();
@@ -126,21 +157,45 @@ export default function Home() {
             value={state.query}
             className={classes.searchInput}
           />
-          <div className='row'>
-            <div className='col'>1</div>
-            <div className='col'>2</div>
-            <div className='col'>3</div>
-            <div className='col'>4</div>
-            <div className='col'>5</div>
-            <div className='col'>6</div>
+          <div className={`${classes.filterIconsContainer} row`}>
+            <div id='apartment' className={`${classes.svgFilters} col`}>
+              <ApartmentSVG />
+            </div>
+            <div id='coal' className={`${classes.svgFilters} col`}>
+              <CoalSVG />
+            </div>
+            <div id='factory' className={`${classes.svgFilters} col`}>
+              <FactorySVG />
+            </div>
+            <div id='graduation' className={`${classes.svgFilters} col`}>
+              <GraduationSVG />
+            </div>
+            <div id='healthcare' className={`${classes.svgFilters} col`}>
+              <HealthcareSVG />
+            </div>
+            <div id='building' className={`${classes.svgFilters} col`}>
+              <BuildingSVG />
+            </div>
           </div>
-          <div className='row'>
-            <div className='col'>1</div>
-            <div className='col'>2</div>
-            <div className='col'>3</div>
-            <div className='col'>4</div>
-            <div className='col'>5</div>
-            <div className='col'>6</div>
+          <div className={`${classes.filterIconsContainer} row`}>
+            <div className={`${classes.svgFilters} col`}>
+              <MosqueSVG />
+            </div>
+            <div className={`${classes.svgFilters} col`}>
+              <MuseumSVG />
+            </div>
+            <div className={`${classes.svgFilters} col`}>
+              <TraySVG />
+            </div>
+            <div className={`${classes.svgFilters} col`}>
+              <VaultSVG />
+            </div>
+            <div className={`${classes.svgFilters} col`}>
+              <ChainSVG />
+            </div>
+            <div className={`${classes.svgFilters} col`}>
+              <OtherSVG />
+            </div>
           </div>
           <ResumeProjects state={state} data={fetchedData} />
         </div>

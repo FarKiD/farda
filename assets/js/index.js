@@ -1,12 +1,34 @@
+import classes from '../../styles/pages/index.module.scss';
+
 export default () => {
     // Scroll to projects section when you click the 'our projects' button
     const anchor = document.getElementById("projectsAnchor");
     const target = document.getElementById("projects");
+    const svgFilterElement = document.querySelector(`.${classes.filterIconsContainer}`);
 
     anchor.addEventListener("click", (event) => {
       event.preventDefault();
       target.scrollIntoView();
     });
+
+    // svgFilterElement.addEventListener("click", (event) => {
+    //     let element = event.target.closest('div');
+
+    //     console.log('yes');
+    //     element.classList.add(classes.svgActive);
+    // });
+
+    // $(`.${classes.filterIconsContainer} div`).click((event) => {
+        
+        
+    //     console.log(element.classList.contains('col'));
+
+    //     if(elementId.hasClass(classes.svgActive)) {
+    //         elementId.removeClass(classes.svgActive);
+    //     } else {
+    //         elementId.addClass(classes.svgActive);
+    //     }
+    // });
 };
 
 
