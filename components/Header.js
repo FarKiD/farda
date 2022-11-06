@@ -5,23 +5,23 @@ const Header = () => {
     <header className={classes.header}>
       <ul>
         <li>
-          <a href="#">
-            Test 1
+          <a href="https://sahba.shop">
+            فروشگاه
           </a>
         </li>
         <li>
-          <a href="#">
-            Test 2
+          <a href="https://sahba.shop/tenders/">
+            مناقصات
           </a>
         </li>
         <li>
-          <a href="#">
-            Test 3
+          <a href="https://sahba.shop/about/">
+            درباره ما
           </a>
         </li>
         <li>
-          <a href="#">
-            Test 4
+          <a href="https://sahba.shop/contact/">
+            تماس با ما
           </a>
         </li>
       </ul>

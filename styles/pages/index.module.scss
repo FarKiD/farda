@@ -1,23 +1,67 @@
 @use '../colors' as *;
+@use '../fontSizes' as *;
 @use 'sass:color';
 @import '../util/banner';
+
+// TODO put into a seperate file
+@mixin animate($animation, $duration, $times) {
+  animation: $animation $duration $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin moveClouds($time) {
+  @include keyframes(moveClouds) {
+    0% {
+      transform: translate(0, -8rem);
+    }
+
+    25% {
+      transform: translate(-4rem, -9rem);
+    }
+
+    50% {
+      transform: translate(4rem, -3rem);
+    }
+
+    75% {
+      transform: translate(-2rem, -8rem);
+    }
+
+    100% {
+      transform: translate(0, -8rem);
+    }
+  }
+
+  @include animate(moveClouds, $time, infinite);
+}
+
+.mountains svg g path:nth-of-type(n + 2) {
+  @include moveClouds(15s);
+}
+
 
 // >>> SECTION 1 START --- INTRO
 
 .intro_container {
-    width: 100%;
-    height: 70vh;
-    min-height: 50rem;
-    background: $camel1;
-    position: relative;
+  direction: rtl;
+  width: 100%;
+  height: 70vh;
+  min-height: 50rem;
+  background: $camel1;
+  position: relative;
 
-    svg {
-        position: absolute;
-        bottom: 0;
-        user-select: none;
-        -webkit-user-drag: none;
-        z-index: 0;
-    }
+  svg {
+      position: absolute;
+      bottom: 0;
+      user-select: none;
+      -webkit-user-drag: none;
+      z-index: 0;
+  }
 }
 
 .intro {
@@ -44,7 +88,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        
+
         :first-child {
             background-color: $brown;
             color: $yellow;
@@ -56,6 +100,7 @@
 
         :nth-child(2) {
             background-color: #fff;
+            color: #000;
         }
 
         a {
@@ -70,55 +115,16 @@
             cursor: pointer;
             transition: 500ms;
             z-index: 2;
+            text-decoration: none;
         }
         a:hover {
             box-shadow: 0 0 .8rem #000;
+            background: $grey;
         }
 
         
     }
 }
-
-// TODO put into a seperate file
-@mixin animate($animation, $duration, $times) {
-  animation: $animation $duration $times;
-}
-  
-  @mixin keyframes($name) {
-    @keyframes #{$name} {
-      @content;
-    }
-  }
-  
-  @mixin moveClouds($time) {
-    @include keyframes(moveClouds) {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      25% {
-        transform: translate(-4rem, -3rem);
-      }
-  
-      50% {
-        transform: translate(4rem, 3rem);
-      }
-
-      75% {
-        transform: translate(-2rem, -2rem);
-      }
-  
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-  
-    @include animate(moveClouds, $time, infinite);
-  }
-
-  .mountains svg g path:nth-of-type(n + 2) {
-    @include moveClouds(15s);
-  }
 
 // ** SECTION 1 END --- INTRO END
 
@@ -140,12 +146,29 @@
       text-align: center;
 
       div {
-        height: 15rem;
+        height: 10vh;
+        min-height: 10rem;
         width: 10rem;
-        margin: 0 5rem;
-        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
       }
     }
+
+    .whyUs div:first-child {
+      margin: 0 0 0 2rem;
+    }
+
+    .whyUs div:nth-child(2) {
+      border-width: 0 .1rem;
+      border-color: #000;
+      border-style: solid;
+    }
+
+    .whyUs div:last-child{
+      margin: 0 2rem 0 0;
+    }
+
 }
 
 // ** SECTION 3 END
@@ -157,7 +180,7 @@
 
   .section4title {
     direction: rtl;
-    margin: 0 2rem;
+    margin: 0 3rem;
   }
 }
 
@@ -173,13 +196,68 @@
 
 .searchInput:focus {
   outline: none;
-  background: #d9d9d9;
+  background: $grey;
   border: .1rem solid #000;
   border-radius: .2rem;
   padding: 0 .4rem;
 }
 
 // ** SECTION 4 END
+
+// >>> SECTION 5 -- OUTRO -- START
+
+.section5 {
+  background: $camel1;
+  height: 25vh;
+  min-height: 30rem;
+  margin: 8rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.outroBoxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  direction: rtl;
+  text-align: center;
+
+  div {
+    background: color.adjust($plum, $alpha: -0.2);
+    border-radius: 2.4rem;
+    color: #fff;
+    padding: 2rem;
+    width: 30vw;
+    min-width: 30rem;
+    transition: 500ms;
+  }
+
+  div:hover {
+    background: $plum;
+  }
+}
+
+.infoContainer {
+  direction: rtl;
+}
+
+.info {
+  text-align: center;
+}
+
+.infoIconContainer {
+  svg {
+    font-size: $h0;
+    color: $pink;
+  }
+}
+
+.telephone {
+  direction: ltr;
+}
+
+// ** SECTION 5 END
 
 
 

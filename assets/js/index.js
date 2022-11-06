@@ -1,3 +1,16 @@
+export default () => {
+    // Scroll to projects section when you click the 'our projects' button
+    const anchor = document.getElementById("projectsAnchor");
+    const target = document.getElementById("projects");
+
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault();
+      target.scrollIntoView();
+    });
+};
+
+
+
 /*
 
 import $ from 'jquery';

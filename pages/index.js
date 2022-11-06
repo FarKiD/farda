@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import PhoneCallbackOutlinedIcon from '@mui/icons-material/PhoneCallbackOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 
-import classes from '../styles/pages/index.module.scss';
 
 import LogoSlideshow from '../components/LogoSlideshow';
 import ResumeProjects from '../components/ResumeProjects';
+
+import classes from '../styles/pages/index.module.scss';
+
+import indexScript from '../assets/js/index';
 import Icons from "../assets/images/icons.js";
+import PenPaperSVG from '../assets/images/svg/resume/penPaper.svg';
+import PhoneSVG from '../assets/images/svg/resume/phone.svg';
+import HeartSVG from '../assets/images/svg/resume/heart.svg';
+
 
 export default function Home() {
   const [state, setState] = useState({
@@ -14,6 +24,10 @@ export default function Home() {
     list: []
   });
   const [fetchedData, setFetchedData] = useState([]);
+
+  useEffect(() => {
+    indexScript();
+  })
 
   fetch('/dummyData.json')
   .then((response) => {
@@ -32,7 +46,7 @@ export default function Home() {
     e.preventDefault();
     const input = e.target.value;
 
-    const results = dummyData.filter(data => {
+    const results = fetchedData.filter(data => {
       if(input === "") { return data };
       return data.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
@@ -44,7 +58,7 @@ export default function Home() {
   }
 
   // ? consider turning each section into seperate components
-  return ( 
+  return (
     <main>
       <Head>
         <title>همراه صهبا | رزومه</title>
@@ -54,19 +68,20 @@ export default function Home() {
         <div className={classes.intro}>
           <div className={classes.intro_titles}>
             <h1 className={classes.title}>همراه صهبا</h1>
-            <h2>به رزومه ما خوش آمدید</h2>
+            <h2>مکانی که در آن...</h2>
           </div>
           <div className={classes.intro_content}>
             <p>
-              رزومه وبسیات صهبا رزومه وبسیات صهبا رزومه وبسیات صهبا رزومه
+              ...تمامی نیاز های امنیتی شما اعم از دوربین های مدار بسته،
               <br />
-              وبسیات صهبا رزومه وبسیات صهبا
+              نصب و راه اندازی آنها و فروش تمامی تجهیزات مرتبط با آن ها را
               <br />
-              رزومه وبسیات صهبا رزومه وبسیات صهبا رزومه وبسیات صهبا
+              به آسانی برای شما فراهم می‌نماییم.
             </p>
             <div className={`h3 ${classes.intro_buttons}`}>
-              <a>Click Here</a>
-              <a>Click Here</a>
+              {/* TODO: change to next/link */}
+              <a>فروشگاه</a> 
+              <a id='projectsAnchor'>پروژه های ما</a>
             </div>
           </div>
         </div>
@@ -81,13 +96,28 @@ export default function Home() {
       {/* SECTION 3 */}
       <section className={classes.section3}>
         <div className={`${classes.whyUs} row`}>
-          <div className="col">چرا ما؟</div>
-          <div className="col">چرا ما؟</div>
-          <div className="col">چرا ما؟</div>
+          <div className="col">
+            <h4>متعهد <HeartSVG /></h4>
+            <p>
+              همراه صهبا با 23  سال سابقه، مطمئن ترین شرکت در زمینه امنیت می‌باشد
+            </p>
+          </div>
+          <div className="col">
+            <h4>گارانتی بلاشرط <PenPaperSVG /></h4>
+            <p>
+              تهیه گارانتی های 12،  ماهه، 24 ماهه و 24 ماهه بلاشرط
+            </p>
+          </div>
+          <div className="col">
+            <h4>خرید آسان <PhoneSVG /></h4>
+            <p>
+              ما خرید ابزار های امنیتی را برای مشتریان خود آسان کرده ایم
+            </p>
+          </div>
         </div>
       </section>
       {/* SECTION 4 */}
-      <section className={classes.section4}>
+      <section id='projects' className={classes.section4}>
         <div>
           <h2 className={classes.section4title}>پروژه های ما</h2>
           <input
@@ -96,7 +126,82 @@ export default function Home() {
             value={state.query}
             className={classes.searchInput}
           />
+          <div className='row'>
+            <div className='col'>1</div>
+            <div className='col'>2</div>
+            <div className='col'>3</div>
+            <div className='col'>4</div>
+            <div className='col'>5</div>
+            <div className='col'>6</div>
+          </div>
+          <div className='row'>
+            <div className='col'>1</div>
+            <div className='col'>2</div>
+            <div className='col'>3</div>
+            <div className='col'>4</div>
+            <div className='col'>5</div>
+            <div className='col'>6</div>
+          </div>
           <ResumeProjects state={state} data={fetchedData} />
+        </div>
+      </section>
+      {/* SECTION 5 --- OUTRO */}
+      <section className={classes.section5}>
+        <div className={`${classes.infoContainer} row`}>
+          <div className={`${classes.info} col`}>
+            <div className={classes.infoIconContainer}>
+              <LocationOnOutlinedIcon />
+            </div>
+            <div>
+              <h5>
+                آدرس
+              </h5>
+              <p>
+                تهران، خیابان سهرودی شمالی، چهارراه میرزایی زینالی شرقی، پلاک ۵۴، واحد ۹، طبقه سوم  
+              </p>
+            </div>
+          </div>
+          <div className={`${classes.info} col`}>
+            <div className={classes.infoIconContainer}>
+              <EmailOutlinedIcon />
+            </div>
+            <div>
+              <h5>
+                ایمیل
+              </h5>
+              <p>
+                <a href='mailto:info@sahba.shop'>
+                  info@sahba.shop
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className={`${classes.info} col`}>
+            <div className={classes.infoIconContainer}>
+              <PhoneCallbackOutlinedIcon />
+            </div>
+            <div className={classes.telephone}>
+              <h5>
+                تلفن
+              </h5>
+              <p>
+                021 - 22255495
+              </p>
+            </div>
+          </div>
+          <div className={`${classes.info} col`}>
+            <div className={classes.infoIconContainer}>
+              <CalendarMonthOutlinedIcon />
+            </div>
+            <div>
+              <h5>
+                ساعات کاری
+              </h5>
+              <p>
+                شنبه تا چهارشنبه، 9 الی 16
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>

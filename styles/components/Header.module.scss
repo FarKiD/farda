@@ -8,20 +8,21 @@
   background: $camel1;
   padding: 1rem 0;
   box-shadow: 0 0 .8rem #000;
+  direction: rtl;
 
   ul {
     display: flex;
     list-style: none;
     flex-direction: row;
-    justify-content: flex-end;
-    margin: 0 2rem 0 0;
+    justify-content: flex-start;
+    margin: 0 3rem 0 0;
     padding: 0;
 
-    li:not(li:last-of-type) {
+    li:not(li:first-of-type) {
       padding: 0 3rem;
     }
 
-    li:last-of-type {
+    li:first-of-type {
       padding: 0 0 0 3rem;
     }
   }

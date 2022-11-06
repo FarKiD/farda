@@ -1,4 +1,5 @@
 @use './colors' as *;
+@use './fontSizes' as *;
 @import './fontSizes';
 
 * {
@@ -15,6 +16,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   // sets 1 rem to 10px
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 .centered {
@@ -46,4 +48,24 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $plum1;
+}
+
+// * Font Sizes
+h1, .h1 {
+  font-size: $h1;
+}
+h2, .h2 {
+  font-size: $h2;
+}
+h3, .h3 {
+  font-size: $h3;
+}
+h4, .h4 {
+  font-size: $h4;
+}
+p, a, .p, .a, li, input {
+  font-size: $p;
+}
+span, .span {
+  font-size: $span
 }

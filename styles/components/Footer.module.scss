@@ -1,11 +1,21 @@
 @use '../colors' as *;
 
 .footer {
-  margin: 2rem 0 0 0;
+  margin: 0;
   background: $camel1;
+  box-shadow: 0 0 .8rem #000;
 
   p {
     margin: 0;
-    padding: .5rem 1rem;
+    padding: .8rem 1rem;
+    direction: rtl;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    span {
+      padding: 0 1rem 0 0;
+    }
   }
 }

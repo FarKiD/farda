@@ -4,7 +4,8 @@
 .resumeListContainer {
   width: 50vw;
   height: 30vh;
-  background: color.adjust($grey, $alpha: -0.8);
+  min-height: 15rem;
+  background: $grey;
   border-radius: .4rem;
 
   direction: rtl;
