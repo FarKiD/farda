@@ -7,12 +7,6 @@ const ResumeListItems = (props) => {
       return props.data.map((data) => {
         return <li key={uuid4()}>{data.name}</li>;
       });
-    } else if ( // Print out based on category
-      props.state.query == props.state.category.map((e) => e.category)
-    ) {
-      return props.state.category.map((data) => {
-        return <li key={uuid4()}>{data.name}</li>;
-      });
     } else { // Print out based on user input
       return props.state.list.map((data) => {
         return <li key={uuid4()}>{data.name}</li>;
@@ -28,4 +22,6 @@ const ResumeListItems = (props) => {
 };
 
 export default ResumeListItems;
+
+
 

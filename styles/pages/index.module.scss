@@ -186,6 +186,7 @@
 }
 
 .searchInput {
+  visibility: hidden; // temporary
   display: flex;
   flex-direction: row;
   direction: rtl;

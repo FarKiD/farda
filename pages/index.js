@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Head from 'next/head';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -32,32 +32,16 @@ import VaultSVG from '../assets/images/svg/resume/vault.svg';
 export default function Home() {
   const [state, setState] = useState({
     query: '',
-    name: [],
-    category: []
+    list: []
   });
   const [fetchedData, setFetchedData] = useState([]);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     indexScript();
-
-    const svgFilterElements = document.querySelectorAll(`.${classes.filterIconsContainer}`);
-
-    // Toggles classes for svg filter icons
-    svgFilterElements.forEach((element) => {
-      element.addEventListener("click", (event) => {
-        let element = event.target.closest("div");
-        let elementId = element.id;
-        console.log(elementId);
-  
-        if (element.classList.contains(classes.svgActive)) {
-          element.classList.remove(classes.svgActive);
-        } else {
-          element.classList.add(classes.svgActive);
-        }
-      });
-    });
   }, []);
   
+  // Fetch data from the database
   fetch('/dummyData.json')
   .then((response) => {
     return response.json();
@@ -71,6 +55,46 @@ export default function Home() {
     console.log(err);
   });
 
+  // Handles what happens when you click the categories
+  const handleCategories = useCallback(async (event) => {
+    let element = event.target.closest("div");
+    let elementId = element.id;
+   
+    const getCategories = fetchedData.filter(data => {
+      if(category.length < 0) { return data };
+      return(data.category.includes(elementId));
+    });
+
+    const joinedArray = state.list.concat(getCategories);
+    const searchBar = document.querySelector(`.${classes.searchInput}`);
+
+    if (element.classList.contains(classes.svgActive)) {
+      element.classList.remove(classes.svgActive);
+
+      const newArr = state.list.filter(e => e.category !== elementId);
+      setState({
+        query: 'Remove active filters to use the search bar',
+        list: newArr
+      });
+
+      if(state.list.length < 2) {
+        searchBar.disabled = false;
+        setState({
+          query: '',
+          list: []
+        });
+      }
+    } else {
+      element.classList.add(classes.svgActive);
+      searchBar.setAttribute("disabled", "true");
+
+      setState({
+        query: 'Remove active filters to use the search bar',
+        list: joinedArray
+      })
+    }
+  });
+
   const handleInputSearchFilter = (e) => {
     e.preventDefault();
     const input = e.target.value;
@@ -79,15 +103,10 @@ export default function Home() {
       if(input === "") { return data };
       return data.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
-    const getCategories = fetchedData.filter(data => {
-      if(input === "") { return data };
-      return data.category.toLowerCase().includes(e.target.value.toLowerCase());
-    });
 
     setState({
       query: input,
-      list: getNames,
-      category: getCategories
+      list: getNames
     }); 
   }
 
@@ -161,46 +180,46 @@ export default function Home() {
             className={classes.searchInput}
           />
           <div className={`${classes.filterIconsContainer1} ${classes.filterIconsContainer} row`}>
-            <div id='corporations' className={`${classes.svgFilters} col`}>
+            <div id='corporations' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <ApartmentSVG />
             </div>
-            <div id='mines' className={`${classes.svgFilters} col`}>
+            <div id='mines' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <CoalSVG />
             </div>
-            <div id='factories' className={`${classes.svgFilters} col`}>
+            <div id='factories' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <FactorySVG />
             </div>
-            <div id='universities' className={`${classes.svgFilters} col`}>
+            <div id='universities' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <GraduationSVG />
             </div>
-            <div id='healthcare' className={`${classes.svgFilters} col`}>
+            <div id='healthcare' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <HealthcareSVG />
             </div>
-            <div id='buildings' className={`${classes.svgFilters} col`}>
+            <div id='buildings' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <BuildingSVG />
             </div>
           </div>
           <div className={`${classes.filterIconsContainer2} ${classes.filterIconsContainer} row`}>
-            <div id='mosques' className={`${classes.svgFilters} col`}>
+            <div id='mosques' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <MosqueSVG />
             </div>
-            <div id='government' className={`${classes.svgFilters} col`}>
+            <div id='government' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <MuseumSVG />
             </div>
-            <div id='foodIndustry' className={`${classes.svgFilters} col`}>
+            <div id='foodIndustry' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <TraySVG />
             </div>
-            <div id='banks' className={`${classes.svgFilters} col`}>
+            <div id='banks' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <VaultSVG />
             </div>
-            <div id='chainProjects' className={`${classes.svgFilters} col`}>
+            <div id='chainProjects' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <ChainSVG />
             </div>
-            <div id='otherProjects' className={`${classes.svgFilters} col`}>
+            <div id='otherProjects' className={`${classes.svgFilters} col`} onClick={handleCategories}>
               <OtherSVG />
             </div>
           </div>
-          <ResumeProjects state={state} data={fetchedData} />
+          <ResumeProjects state={state} data={fetchedData} category={category} />
         </div>
       </section>
       {/* SECTION 5 --- OUTRO */}
