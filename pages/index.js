@@ -29,36 +29,34 @@ import OtherSVG from '../assets/images/svg/resume/other.svg';
 import TraySVG from '../assets/images/svg/resume/tray.svg';
 import VaultSVG from '../assets/images/svg/resume/vault.svg';
 
-
 export default function Home() {
   const [state, setState] = useState({
     query: '',
-    list: []
+    name: [],
+    category: []
   });
   const [fetchedData, setFetchedData] = useState([]);
-  const [svgFilters, setSvgFilters] = useState([]);
 
   useEffect(() => {
     indexScript();
-    const svgFilterElement = document.querySelector(`.${classes.filterIconsContainer}`);
 
-    svgFilterElement.addEventListener("click", (event) => {
-      let element = event.target.closest("div");
+    const svgFilterElements = document.querySelectorAll(`.${classes.filterIconsContainer}`);
 
-      setSvgFilters(svgFilters.push(element.id));
-
-      console.log(svgFilters);
-
-      if (
-        element.classList.contains(classes.svgActive) &&
-        svgFilters.includes(element.id)
-      ) {
-        element.classList.remove(classes.svgActive);
-      } else {
-        element.classList.add(classes.svgActive);
-      }
+    // Toggles classes for svg filter icons
+    svgFilterElements.forEach((element) => {
+      element.addEventListener("click", (event) => {
+        let element = event.target.closest("div");
+        let elementId = element.id;
+        console.log(elementId);
+  
+        if (element.classList.contains(classes.svgActive)) {
+          element.classList.remove(classes.svgActive);
+        } else {
+          element.classList.add(classes.svgActive);
+        }
+      });
     });
-  }, [])
+  }, []);
   
   fetch('/dummyData.json')
   .then((response) => {
@@ -77,14 +75,19 @@ export default function Home() {
     e.preventDefault();
     const input = e.target.value;
 
-    const results = fetchedData.filter(data => {
+    const getNames = fetchedData.filter(data => {
       if(input === "") { return data };
       return data.name.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    const getCategories = fetchedData.filter(data => {
+      if(input === "") { return data };
+      return data.category.toLowerCase().includes(e.target.value.toLowerCase());
     });
 
     setState({
       query: input,
-      list: results
+      list: getNames,
+      category: getCategories
     }); 
   }
 
@@ -157,43 +160,43 @@ export default function Home() {
             value={state.query}
             className={classes.searchInput}
           />
-          <div className={`${classes.filterIconsContainer} row`}>
-            <div id='apartment' className={`${classes.svgFilters} col`}>
+          <div className={`${classes.filterIconsContainer1} ${classes.filterIconsContainer} row`}>
+            <div id='corporations' className={`${classes.svgFilters} col`}>
               <ApartmentSVG />
             </div>
-            <div id='coal' className={`${classes.svgFilters} col`}>
+            <div id='mines' className={`${classes.svgFilters} col`}>
               <CoalSVG />
             </div>
-            <div id='factory' className={`${classes.svgFilters} col`}>
+            <div id='factories' className={`${classes.svgFilters} col`}>
               <FactorySVG />
             </div>
-            <div id='graduation' className={`${classes.svgFilters} col`}>
+            <div id='universities' className={`${classes.svgFilters} col`}>
               <GraduationSVG />
             </div>
             <div id='healthcare' className={`${classes.svgFilters} col`}>
               <HealthcareSVG />
             </div>
-            <div id='building' className={`${classes.svgFilters} col`}>
+            <div id='buildings' className={`${classes.svgFilters} col`}>
               <BuildingSVG />
             </div>
           </div>
-          <div className={`${classes.filterIconsContainer} row`}>
-            <div className={`${classes.svgFilters} col`}>
+          <div className={`${classes.filterIconsContainer2} ${classes.filterIconsContainer} row`}>
+            <div id='mosques' className={`${classes.svgFilters} col`}>
               <MosqueSVG />
             </div>
-            <div className={`${classes.svgFilters} col`}>
+            <div id='government' className={`${classes.svgFilters} col`}>
               <MuseumSVG />
             </div>
-            <div className={`${classes.svgFilters} col`}>
+            <div id='foodIndustry' className={`${classes.svgFilters} col`}>
               <TraySVG />
             </div>
-            <div className={`${classes.svgFilters} col`}>
+            <div id='banks' className={`${classes.svgFilters} col`}>
               <VaultSVG />
             </div>
-            <div className={`${classes.svgFilters} col`}>
+            <div id='chainProjects' className={`${classes.svgFilters} col`}>
               <ChainSVG />
             </div>
-            <div className={`${classes.svgFilters} col`}>
+            <div id='otherProjects' className={`${classes.svgFilters} col`}>
               <OtherSVG />
             </div>
           </div>

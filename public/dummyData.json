@@ -1,8 +1,8 @@
 {
   "brand": [
-    { "name": "Bosch", "category": "1" },
-    { "name": "Sepah", "category": "1" },
-    { "name": "V-Tech", "category": "1" },
+    { "name": "Bosch", "category": "4" },
+    { "name": "Sepah", "category": "banks" },
+    { "name": "Hospital", "category": "hospitals" },
     { "name": "panasonic", "category": "1" },
     { "name": "panasonic", "category": "1" },
     { "name": "panasonic", "category": "1" },
