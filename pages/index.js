@@ -1,3 +1,6 @@
+import path from 'path';
+import fs from 'fs/promises';
+
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
@@ -183,8 +186,10 @@ export default function Home({ data }) {
 
 export async function getStaticProps() {
   // Fetch data from the database
-  const res = await fetch('http://localhost:3000/dummyData.json');
-  const data = await res.json();
+  // const res = await fetch('http://localhost:3000/dummyData.json');
+  const filePath = path.join(process.cwd(), 'assets', 'data', 'dummyData.json');
+  const jsonData = await fs.readFile(filePath);
+  const data = JSON.parse(jsonData);
 
   return {
     props: {
