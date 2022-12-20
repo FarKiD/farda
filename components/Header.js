@@ -20,7 +20,7 @@ const Header = () => {
           </a>
         </li>
         <li>
-          <a target='_blank' href="https://ostadportfolio.iran.liara.run/">
+          <a target='_blank' rel="noreferrer" href="https://ostadportfolio.iran.liara.run/">
             تماس با ما
           </a>
         </li>
