@@ -22,6 +22,3 @@ const ResumeListItems = (props) => {
 };
 
 export default ResumeListItems;
-
-
-

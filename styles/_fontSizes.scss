@@ -5,3 +5,21 @@ $h3: clamp(1.853rem, calc( 12px + 1.950vw ), 2.438rem);
 $h4: clamp(1.625rem, calc( 12px + 1.300vw ), 1.950rem);
 $p: clamp(1.380rem, calc( 12px + 0.720vw ), 1.500rem);
 $span: clamp(1.200rem, calc( 12px + 0.480vw ), 1.350rem);
+
+$h1-tablet: clamp(2.263rem, calc( 12px + 3.575vw ), 3.238rem) !important;
+$h2-tablet: clamp(1.775rem, calc( 12px + 2.600vw ), 2.425rem) !important;
+$h3-tablet: clamp(1.353rem, calc( 12px + 1.950vw ), 1.938rem) !important;
+$h4-tablet: clamp(1.125rem, calc( 12px + 1.300vw ), 1.450rem) !important;
+$p-tablet: clamp(1.100rem, calc( 12px + 0.720vw ), 1.220rem) !important;
+
+$h1-phone: clamp(2.063rem, calc( 12px + 3.575vw ), 3.038rem) !important;
+$h2-phone: clamp(1.575rem, calc( 12px + 2.600vw ), 2.225rem) !important;
+$h3-phone: clamp(1.153rem, calc( 12px + 1.950vw ), 1.738rem) !important;
+$h4-phone: clamp(0.925rem, calc( 12px + 1.300vw ), 1.250rem) !important;
+$p-phone: clamp(0.900rem, calc( 12px + 0.720vw ), 1.020rem) !important;
+
+$h1-xs: clamp(1.763rem, calc( 12px + 3.575vw ), 2.738rem) !important;
+$h2-xs: clamp(1.275rem, calc( 12px + 2.600vw ), 1.925rem) !important;
+$h3-xs: clamp(0.853rem, calc( 12px + 1.950vw ), 1.438rem) !important;
+$h4-xs: clamp(0.925rem, calc( 12px + 1.300vw ), 1.250rem) !important;
+$p-xs: clamp(0.900rem, calc( 12px + 0.720vw ), 1.020rem) !important;

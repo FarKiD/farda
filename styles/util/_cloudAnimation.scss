@@ -1,0 +1,35 @@
+@mixin animate($animation, $duration, $times) {
+  animation: $animation $duration $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin moveClouds($time, $startX, $startY, $qrtrX, $qrtrY, $halfX, $halfY, $qrtrHalfX, $qrtrHalfY) {
+  @include keyframes(moveClouds) {
+    0% {
+      transform: translate($startX, $startY);
+    }
+
+    25% {
+      transform: translate($qrtrX, $qrtrY);
+    }
+
+    50% {
+      transform: translate($halfX, $halfY);
+    }
+
+    75% {
+      transform: translate($qrtrHalfX, $qrtrHalfY);
+    }
+
+    100% {
+      transform: translate($startX, $startY);
+    }
+  }
+
+  @include animate(moveClouds, $time, infinite);
+}

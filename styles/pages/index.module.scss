@@ -2,48 +2,24 @@
 @use '../fontSizes' as *;
 @use 'sass:color';
 @import '../util/banner';
+@import '../util/cloudAnimation';
 
-// TODO put into a seperate file
-@mixin animate($animation, $duration, $times) {
-  animation: $animation $duration $times;
+// Clouds animation
+.mountains svg g path:nth-of-type(2) {
+  @include moveClouds(15s, 0, -8rem, -4rem, -9rem, 4rem, -3rem, -2rem, -8rem);
 }
-
-@mixin keyframes($name) {
-  @keyframes #{$name} {
-    @content;
-  }
+.mountains svg g path:nth-of-type(3) {
+  @include moveClouds(20s, 0, -4rem, 2rem, -6rem, 2rem, -3rem, -2rem, -1rem);
 }
-
-@mixin moveClouds($time) {
-  @include keyframes(moveClouds) {
-    0% {
-      transform: translate(0, -8rem);
-    }
-
-    25% {
-      transform: translate(-4rem, -9rem);
-    }
-
-    50% {
-      transform: translate(4rem, -3rem);
-    }
-
-    75% {
-      transform: translate(-2rem, -8rem);
-    }
-
-    100% {
-      transform: translate(0, -8rem);
-    }
-  }
-
-  @include animate(moveClouds, $time, infinite);
+.mountains svg g path:nth-of-type(4) {
+  @include moveClouds(14s, 0, -2rem, -2rem, -6rem, -4rem, -2rem, 1rem, 1rem);
 }
-
-.mountains svg g path:nth-of-type(n + 2) {
-  @include moveClouds(15s);
+.mountains svg g path:nth-of-type(5) {
+  @include moveClouds(20s, 0, -2rem, -2rem, -6rem, -4rem, -2rem, 1rem, 1rem);
 }
-
+.mountains svg g path:nth-of-type(6) {
+  @include moveClouds(30s, 0, -3rem, -3rem, -5rem, -3rem, -2rem, 1rem, 1rem);
+}
 
 // >>> SECTION 1 START --- INTRO
 
@@ -186,7 +162,7 @@
 }
 
 .searchInput {
-  visibility: hidden; // temporary
+  visibility: visible; // temporary
   display: flex;
   flex-direction: row;
   direction: rtl;
@@ -202,26 +178,6 @@
   border: .1rem solid #000;
   border-radius: .2rem;
   padding: 0 .4rem;
-}
-
-.filterIconsContainer {
-  text-align: center;
-  margin: 2.4rem 0;
-
-  svg {
-    width: 8rem;
-    height: 8rem;
-    transition: 500ms;
-  }
-
-  svg:hover {
-    fill: $blue;
-    cursor: pointer;
-  }
-}
-
-.svgActive {
-  fill: $blue;
 }
 
 // ** SECTION 4 END
@@ -244,6 +200,7 @@
   justify-content: center;
   direction: rtl;
   text-align: center;
+  
 
   div {
     background: color.adjust($plum, $alpha: -0.2);
@@ -266,6 +223,10 @@
 
 .info {
   text-align: center;
+  border-width: 0 .1rem;
+  border-color: #000;
+  border-style: solid;
+  padding: 0 2rem;
 }
 
 .infoIconContainer {
@@ -280,6 +241,55 @@
 }
 
 // ** SECTION 5 END
+
+@media only screen and (max-width: 768px) {
+  .intro_buttons {
+    a {
+      width: 10rem !important;
+      height: 3.5rem !important;
+      margin: 1rem 0 0 0 !important;
+    }
+  }
+
+  .whyUs {
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 50% !important;
+      border-width: 0 0 .1rem 0 !important;
+      border-color: #000;
+      border-style: solid;
+      margin: 0 !important;
+      padding: 1.2rem 0;
+    }
+
+    div:last-of-type {
+      border: none;
+    }
+  }
+
+  .section5 {
+    height: unset;
+    padding: 5rem 0;
+  }
+
+  .infoContainer {
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .info {
+    padding: 2rem 0;
+    border-width: 0 0 .1rem 0;
+    max-width: 50%;
+
+  }
+
+  .info:last-of-type {
+    border: none;
+  }
+}
 
 
 

@@ -1,14 +1,24 @@
 .slideshow {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     list-style: none;
     margin: 0;
     padding: 5vh 0;
+    width: 200%;
+    transform: translateX(-30rem);
+    transition: transform 100ms;
 }
 
 .icon {
     width: 8rem;
-    margin: 0 6rem;
+    margin: 0 4rem;
     list-style: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .icon {
+        width: 10vw;
+        margin: 0 2vw;
+        min-width: 4rem;
+    }
 }

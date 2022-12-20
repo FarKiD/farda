@@ -1,5 +1,5 @@
 {
-  "name": "sahba-shop",
+  "name": "farda-shop",
   "version": "0.1.0",
   "private": true,
   "author": "Sajjad Ostadebrahim",
@@ -15,7 +15,6 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.12",
     "bootstrap": "^5.2.2",
-    "jquery": "^3.6.1",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
